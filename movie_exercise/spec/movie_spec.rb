@@ -32,6 +32,7 @@ class Movie
       actor.act
       actor.fall_off_ladder
       actor.light_on_fire
+      actor.act
     end
   end
 end
@@ -48,10 +49,19 @@ RSpec.describe Movie do
   describe "#start_shooting" do
     # PROPERLY TESTS THAT THE MOVIE CLASS RECEIVES THE CORRECT METHODS
     it "expects and actor to perform three actions" do
-      expect(stuntman).to receive(:ready?)
-      expect(stuntman).to receive(:act)
-      expect(stuntman).to receive(:fall_off_ladder)
-      expect(stuntman).to receive(:light_on_fire)
+      # expect(stuntman).to receive(:ready?)
+      # expect(stuntman).to receive(:act)
+      # expect(stuntman).to receive(:fall_off_ladder)
+      # expect(stuntman).to receive(:light_on_fire)
+
+      # QUALIFY HOW MANY TIMES YOU WANT TO SEE IT RUN
+      # expect(stuntman).to receive(:light_on_fire).once
+      # expect(stuntman).to receive(:light_on_fire).exactly(1).times
+      # expect(stuntman).to receive(:light_on_fire).at_most(1).times
+
+      # expect(stuntman).to receive(:act).twice
+      # expect(stuntman).to receive(:act).exactly(2).times
+      expect(stuntman).to receive(:act).at_least(2).times
       subject.start_shooting
     end
   end
